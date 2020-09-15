@@ -8,6 +8,10 @@
   padding-top: 60px
 }
 
+.container .search {
+  width: 500px;
+}
+
 
 .card-product {
   overflow: hidden;
@@ -48,7 +52,7 @@
 .slides {
 
 
-display: flex;
+  display: flex;
 
 
 }
@@ -56,7 +60,7 @@ display: flex;
 .slides > div {
 
 
-display: flex;
+  display: flex;
 
 
 }
@@ -64,7 +68,7 @@ display: flex;
 .slides {
 
 
-overflow-x: auto;
+  overflow-x: auto;
 
 
 }
@@ -72,19 +76,19 @@ overflow-x: auto;
 .slides > div {
 
 
-flex-shrink: 0;
+  flex-shrink: 0;
 
 
-width: 50%;
+  width: 50%;
 
 
-height: 400px;
+  height: 400px;
 }
 
 .slides {
 
 
-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
 
 
 }
@@ -93,10 +97,10 @@ scroll-snap-type: x mandatory;
 .slides > div {
 
 
-scroll-snap-align: start;
+  scroll-snap-align: start;
 
 
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 
 
 }
@@ -104,16 +108,16 @@ scroll-behavior: smooth;
 .slides > div {
 
 
-background: #74ABE2;
+  background: #74ABE2;
 
 
-justify-content: center;
+  justify-content: center;
 
 
-align-items: center;
+  align-items: center;
 
 
-font-size: 100px;
+  font-size: 100px;
 
 
 }
@@ -121,13 +125,13 @@ font-size: 100px;
 .slides {
 
 
-display: flex;
+  display: flex;
 
 
-overflow-x: auto;
+  overflow-x: auto;
 
 
-scroll-snap-type: x mandatory;
+  scroll-snap-type: x mandatory;
 
 
 }
@@ -136,34 +140,34 @@ scroll-snap-type: x mandatory;
 .slides > div {
 
 
-display: flex;
+  display: flex;
 
 
-flex-shrink: 0;
+  flex-shrink: 0;
 
 
-width: 50%;
+  width: 50%;
 
 
-height: 400px;
+  height: 400px;
 
 
-scroll-snap-align: start;
+  scroll-snap-align: start;
 
 
-scroll-behavior: smooth;
+  scroll-behavior: smooth;
 
 
-background: #74ABE2;
+  background: #74ABE2;
 
 
-justify-content: center;
+  justify-content: center;
 
 
-align-items: center;
+  align-items: center;
 
 
-font-size: 100px;
+  font-size: 100px;
 
 
 }
