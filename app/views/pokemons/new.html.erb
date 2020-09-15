@@ -1,0 +1,10 @@
+<h1>Create a Pokémon listing
+<%= simple_form_for @pokemon do |f| %>
+name description price location speciesid
+<%= f.input :name %>
+<%= f.input :description %>
+<%= f.input :price %>
+<%= f.input :location %>
+<%= f.association :pokedex %>
+<%= f.submit %>
+<% end %>
