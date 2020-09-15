@@ -8,9 +8,11 @@ class PokemonsController < ApplicationController
   def create
     pokemon = Pokemon.new(pokemon_params)
     pokemon.user = current_user
-    pokemon.save!
-
-    redirect_to pokemon_path(pokemon)
+    if pokemon.save
+      redirect_to pokemon_path(pokemon)
+    else
+      render :new
+    end
   end
 
   def edit
@@ -18,9 +20,11 @@ class PokemonsController < ApplicationController
 
   def update
     @pokemon.update(pokemon_params)
-    @pokemon.save!
-
-    redirect_to pokemon_path(@pokemon)
+    if @pokemon.save
+      redirect_to pokemon_path(@pokemon)
+    else
+      render :edit
+    end
   end
 
   def destroy
