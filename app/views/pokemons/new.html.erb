@@ -1,9 +1,2 @@
 <h1>Create a Pokémon listing</h1>
-<%= simple_form_for @pokemon do |f| %>
-<%= f.input :name %>
-<%= f.input :description %>
-<%= f.input :price %>
-<%= f.input :location %>
-<%= f.association :pokedex %>
-<%= f.submit %>
-<% end %>
+<%= render 'shared/pokemon_form' %>
