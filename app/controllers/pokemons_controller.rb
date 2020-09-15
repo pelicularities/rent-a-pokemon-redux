@@ -18,9 +18,9 @@ class PokemonsController < ApplicationController
 
   def update
     @pokemon.update(pokemon_params)
-    pokemon.save!
+    @pokemon.save!
 
-    redirect_to pokemon_path(pokemon)
+    redirect_to pokemon_path(@pokemon)
   end
 
   def destroy
@@ -36,6 +36,6 @@ class PokemonsController < ApplicationController
   end
 
   def pokemon_params
-    params.require(:pokemon).permit(:name, :description, :price, :location, :pokedex)
+    params.require(:pokemon).permit(:name, :description, :price, :location, :pokedex_id)
   end
 end
