@@ -1,5 +1,12 @@
 class PokemonsController < ApplicationController
-  before_action :set_pokemon, only: [:edit, :update, :destroy]
+  before_action :set_pokemon, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @pokemon = Pokemon.all
+  end
+
+  def show
+  end
 
   def new
     @pokemon = Pokemon.new
@@ -29,7 +36,7 @@ class PokemonsController < ApplicationController
 
   def destroy
     @pokemon.destroy
-    
+
     redirect_to pokemons_path
   end
 
