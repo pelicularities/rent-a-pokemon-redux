@@ -22,8 +22,15 @@ ids.each do |id|
   url = baseUrl + id.to_s
   # puts url
   json = JSON.parse(open(url).read)
-  Pokedex.create!(species: json["name"].capitalize)
+  pokedex = Pokedex.create!(species: json["name"].capitalize)
   puts "seeded #{json['name'].capitalize}"
+  # upload artwork
+ artwork_link = json['sprites']['other']['official-artwork']['front_default']
+ if !artwork_link
+  artwork_link = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/133.png"
+ end
+  artwork_png = URI.open(artwork_link)
+  pokedex.artwork.attach(io: artwork_png, filename: "#{json['name']}.png", content_type: 'image/png')
 end
 
 puts 'completed Pokedex seeding!'
@@ -103,6 +110,7 @@ pokemons = [
 pokemons.each do |pokemon|
   Pokemon.create!(pokemon)
 end
+
 
 # Rentals - 2
 
