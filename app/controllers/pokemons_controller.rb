@@ -1,25 +1,4 @@
 class PokemonsController < ApplicationController
-<<<<<<< Updated upstream
-    def new
-    end
-
-    def create
-    end
-
-    def edit
-    end
-
-    def update
-        
-    end
-
-    def destroy
-    end
-    
-    private
-
-
-=======
   before_action :set_pokemon, only: [:edit, :update, :destroy]
 
   def new
@@ -59,5 +38,4 @@ class PokemonsController < ApplicationController
   def pokemon_params
     params.require(:pokemon).permit(:name, :description, :price, :location, :pokedex)
   end
->>>>>>> Stashed changes
 end
