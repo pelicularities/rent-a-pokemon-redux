@@ -3,4 +3,9 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def history
+    user = current_user
+    @rentals = user.rentals.all
+  end
 end
