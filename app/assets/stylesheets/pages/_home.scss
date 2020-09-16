@@ -8,6 +8,10 @@
   padding-top: 60px
 }
 
+.container .search {
+  width: 500px;
+}
+
 
 .card-product {
   overflow: hidden;
@@ -42,3 +46,133 @@
 .card-product .card-product-infos {
   padding: 16px;
 }
+
+// carousel css
+
+.slides {
+
+
+  display: flex;
+
+
+}
+
+.slides > div {
+
+
+  display: flex;
+
+
+}
+
+.slides {
+
+
+  overflow-x: auto;
+
+
+}
+
+.slides > div {
+
+
+  flex-shrink: 0;
+
+
+  width: 50%;
+
+
+  height: 400px;
+}
+
+.slides {
+
+
+  scroll-snap-type: x mandatory;
+
+
+}
+
+
+.slides > div {
+
+
+  scroll-snap-align: start;
+
+
+  scroll-behavior: smooth;
+
+
+}
+
+.slides > div {
+
+
+  background: #74ABE2;
+
+
+  justify-content: center;
+
+
+  align-items: center;
+
+
+  font-size: 100px;
+
+
+}
+
+.slides {
+
+
+  display: flex;
+
+
+  overflow-x: auto;
+
+
+  scroll-snap-type: x mandatory;
+
+
+}
+
+
+.slides > div {
+
+
+  display: flex;
+
+
+  flex-shrink: 0;
+
+
+  width: 50%;
+
+
+  height: 400px;
+
+
+  scroll-snap-align: start;
+
+
+  scroll-behavior: smooth;
+
+
+  background: #74ABE2;
+
+
+  justify-content: center;
+
+
+  align-items: center;
+
+
+  font-size: 100px;
+
+
+}
+
+.slides img {
+  height: 100px
+}
+
