@@ -5,39 +5,22 @@
 <h1>Pokemon Type for rent</h1>
 
 <div class="container">
-  <div class="card" style="width: 18rem;">
-    <img class="card-img-top" src="https://compote.slate.com/images/18ba92e4-e39b-44a3-af3b-88f735703fa7.png?width=780&height=520&rect=1560x1040&offset=0x0" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Pikachu</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Rent Me</a>
+  <div class="grid-card">
+    <% @pokemon.each do |pokemon| %>
+      <div class="card rounded border-primary" style="width: 18rem;">
+        <%= cl_image_tag pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+        <div class="card-body">
+          <h5 class="card-title"><%= pokemon.name %></h5>
+          <div class="card-text">
+          <strong>description:</strong> <br>
+          <%= pokemon.description %> <br>
+          <strong>price:</strong> $ <%= pokemon.price.to_i.to_s %> <br>
+          <strong>pokedex:</strong> <%= pokemon.pokedex.species %> <br>
+          <strong>user:</strong> <%= pokemon.user.username.capitalize %>
+          </div>
+            <a href="#" class="btn btn-primary">Rent</a>
+        </div>
       </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://compote.slate.com/images/18ba92e4-e39b-44a3-af3b-88f735703fa7.png?width=780&height=520&rect=1560x1040&offset=0x0" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pikachu</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Rent Me</a>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://compote.slate.com/images/18ba92e4-e39b-44a3-af3b-88f735703fa7.png?width=780&height=520&rect=1560x1040&offset=0x0" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pikachu</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Rent Me</a>
-      </div>
-    </div>
-
-    <div class="card" style="width: 18rem;">
-      <img class="card-img-top" src="https://compote.slate.com/images/18ba92e4-e39b-44a3-af3b-88f735703fa7.png?width=780&height=520&rect=1560x1040&offset=0x0" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Pikachu</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        <a href="#" class="btn btn-primary">Rent Me</a>
-      </div>
-    </div>
+    <% end %>
+  </div>
   </div>
