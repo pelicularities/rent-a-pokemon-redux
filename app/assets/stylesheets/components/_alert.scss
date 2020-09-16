@@ -1,6 +1,14 @@
-.alert {
+.alert, .notice {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: $spacer;
+  right: $spacer;
+  padding: $spacer;
+  border-radius: $border-radius;
   z-index: 1000;
+}
+.alert {
+  background-color: $danger;
+}
+.notice {
+  background-color: $success;
 }
