@@ -1,13 +1,8 @@
 <div class="slides">
 
-
-<div> 1 </div>
-
-
-<div> 2 </div>
-
-
-<div> 3 </div>
+<% @pokemon.each do |pokemon| %>
+<div> <%= cl_image_tag pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %> </div>
+<% end %>
 
 
 </div>
