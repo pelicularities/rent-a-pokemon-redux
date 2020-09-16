@@ -1,7 +1,7 @@
 class Pokemon < ApplicationRecord
   belongs_to :user
   belongs_to :pokedex
-  has_many :rentals
+  has_many :rentals, dependent: :destroy
   validates :name, :description, :price, :location, presence: true
 
   def unavailable_dates
