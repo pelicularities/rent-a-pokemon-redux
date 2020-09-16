@@ -1,0 +1,10 @@
+
+<%= render 'shared/navbar' %>
+<!-- <h1><%= Pokedex[:id][:species] %></h1> -->
+<div class = 'container'>
+
+  <% @pokemons.each do |p|  %>
+  <h1><%= p.name %></h1>
+  <% end %>
+
+</div>
