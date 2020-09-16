@@ -23,7 +23,9 @@ require("channels")
 // ----------------------------------------------------
 
 // External imports
-import "bootstrap";
+import 'bootstrap';
+import { flatpickr } from 'flatpickr';
+import { pokemon_rental_flatpickr } from '../plugins/init_flatpickr';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -31,4 +33,5 @@ import "bootstrap";
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  pokemon_rental_flatpickr();
 });
