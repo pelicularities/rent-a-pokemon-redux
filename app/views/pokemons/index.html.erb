@@ -18,7 +18,8 @@
           <strong>pokedex:</strong> <%= pokemon.pokedex.species %> <br>
           <strong>user:</strong> <%= pokemon.user.username.capitalize %>
           </div>
-            <a href="#" class="btn btn-primary">Rent</a>
+            <%= link_to 'Rent Now!', new_pokemon_rental_path(pokemon), class:'btn btn-primary' %>
+            <%= link_to 'More details', pokemon_path(pokemon), class:'btn btn-primary' %>
         </div>
       </div>
     <% end %>
