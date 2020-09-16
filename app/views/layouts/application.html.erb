@@ -17,8 +17,12 @@
 
 
 <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+  <% if notice %>
+    <div class="notice"><%= notice %></div>
+  <% end %>
+  <% if alert %>
+    <div class="alert"><%= alert %></div>
+  <% end %>
   <div>
     <%= render 'shared/navbar' %>
   </div>
