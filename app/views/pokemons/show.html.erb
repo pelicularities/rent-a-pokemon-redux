@@ -7,7 +7,6 @@
   <div class="card">
 <div class="heading">
   <h1><%= @pokemon.pokedex.species %></h1>
-  <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-pokemon-user avatar-bordered" />
   </div>
   <%= cl_image_tag @pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
     <div class="card-body">
@@ -16,8 +15,9 @@
         <p>description: <br><%= @pokemon.description %></p>
       </div>
       <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %></h2>
+      <p>owner: <%= @pokemon.user.username.capitalize %></p>
       <div class="container card-btn">
-      <a href="#" class="btn btn-primary rounded">I want it!</a>
+      <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class='btn btn-primary rounded' %>
       
       </div>
     </div>
