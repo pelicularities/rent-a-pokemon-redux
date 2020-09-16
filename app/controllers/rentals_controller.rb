@@ -11,9 +11,9 @@ class RentalsController < ApplicationController
     rental.pokemon = @pokemon
     rental.price = @pokemon.price
     if rental.save
-      redirect_to pokemon_path(@pokemon)
+      redirect_to history_path
     else
-      redirect_to pokemons_path
+      render new
     end
   end
   

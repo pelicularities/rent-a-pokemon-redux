@@ -17,7 +17,7 @@
       <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %></h2>
       <p>owner: <%= @pokemon.user.username.capitalize %></p>
       <div class="container card-btn">
-      <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class='btn btn-primary rounded' %>
+      <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class:'btn btn-primary rounded' %>
       
       </div>
     </div>
