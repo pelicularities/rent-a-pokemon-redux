@@ -1,0 +1,13 @@
+<%= simple_form_for [ @pokemon, @rental ] do |f| %>
+<h1>You are renting: <%= @pokemon.name %></h1>
+<%= cl_image_tag @pokemon.pokedex.artwork.key %>
+<ul>
+  <li>Owner: <%= @pokemon.user.username %></li>
+  <li>Species: <%= @pokemon.pokedex.species %></li>
+  <li>Location: <%= @pokemon.location %></li>
+  <li><strong>Price: <%= @pokemon.price %></strong></li>
+</ul>
+<%= f.input :start_date %>
+<%= f.input :end_date %>
+<%= f.submit %>
+<% end %>

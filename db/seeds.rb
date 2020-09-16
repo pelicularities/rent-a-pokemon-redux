@@ -12,6 +12,7 @@ require 'open-uri'
 Pokedex.destroy_all
 User.destroy_all
 Pokemon.destroy_all
+Rental.destroy_all
 
 baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
 ids = [1, 4, 7, 25, 133].to_a

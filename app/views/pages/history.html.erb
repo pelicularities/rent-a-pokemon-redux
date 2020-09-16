@@ -1,0 +1,16 @@
+<h1>My Rentals</h1>
+<div class="container">
+  <ul>
+  <% @rentals.order(start_date: :desc).each do |rental| %>
+    <li><strong><%= rental.start_date %> to <%= rental.end_date %></strong>
+      <ul class="list-unstyled">
+        <li><%= cl_image_tag rental.pokemon.pokedex.artwork.key, width: 200, height: 200 %></li>
+        <li>Name: <%= rental.pokemon.name %></li>
+        <li>Species: <%= rental.pokemon.pokedex.species %></li>
+        <li>Price: <%= rental.price %></li>
+        <li>Rented from: <%= rental.user.username %></li>
+      </ul>
+    </li>
+  <% end %>
+  </ul>
+</div>
