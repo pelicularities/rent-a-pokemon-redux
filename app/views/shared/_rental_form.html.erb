@@ -1,13 +1,24 @@
-<%= simple_form_for [ @pokemon, @rental ] do |f| %>
-<h1>You are renting: <%= @pokemon.name %></h1>
-<%= cl_image_tag @pokemon.pokedex.artwork.key %>
-<ul>
-  <li>Owner: <%= @pokemon.user.username %></li>
-  <li>Species: <%= @pokemon.pokedex.species %></li>
-  <li>Location: <%= @pokemon.location %></li>
-  <li><strong>Price: <%= @pokemon.price %></strong></li>
-</ul>
-<%= f.input :start_date %>
-<%= f.input :end_date %>
-<%= f.submit %>
-<% end %>
+<div id='pokemon-rental-dates' data-unavailable="<%= @pokemon.unavailable_dates.to_json %>">
+  <% if current_user.id != @pokemon.user_id  %>
+    <%= simple_form_for [ @pokemon, @rental ] do |f| %>
+      <h1>You are renting: <%= @pokemon.name %></h1>
+      <%= cl_image_tag @pokemon.pokedex.artwork.key %>
+      <ul>
+        <li>Owner: <%= @pokemon.user.username %></li>
+        <li>Species: <%= @pokemon.pokedex.species %></li>
+        <li>Location: <%= @pokemon.location %></li>
+        <li><strong>Price: <%= @pokemon.price %></strong></li>
+      </ul>
+      <div class="col-6">
+        <%= f.input :start_date, as: :string, type: :text %>
+      </div>
+      <div class="col-6">
+        <%= f.input :end_date, as: :string, type: :text %>
+      </div>
+      <%= f.submit 'Rent this Pokemon', class: 'btn btn-primary' %>
+    <% end %>
+  <% else %>
+    <p>You can't rent your own Pokemon!</p>
+    <%= link_to 'See all Pokemon', pokemons_path, class: 'btn btn-primary' %>
+  <% end %>
+</div>
