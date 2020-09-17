@@ -9,7 +9,12 @@ class RentalsController < ApplicationController
     rental = Rental.new(rental_params)
     rental.user = current_user
     rental.pokemon = @pokemon
-    rental.price = @pokemon.price
+
+    # params[:rental][:start_date] is a String (flatpickr requires a string input)
+    # #to_date converts the string to a Date, subtraction of Date by another Date returns a Rational
+    # Rational is converted to an integer, and we add 1 to include the first day of rental
+    days = (params[:rental][:end_date].to_date - params[:rental][:start_date].to_date).to_i + 1
+    rental.price = @pokemon.price * days
     if rental.save
       redirect_to history_path
     else

@@ -7,7 +7,7 @@
         <li>Owner: <%= @pokemon.user.username %></li>
         <li>Species: <%= @pokemon.pokedex.species %></li>
         <li>Location: <%= @pokemon.location %></li>
-        <li><strong>Price: <%= @pokemon.price %></strong></li>
+        <li><strong>Price: $ <%= @pokemon.price.to_i %> / day</strong></li>
       </ul>
       <div class="col-6">
         <%= f.input :start_date, as: :string, type: :text %>
