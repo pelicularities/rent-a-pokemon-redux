@@ -9,16 +9,16 @@
         <h1><%= @pokemon.pokedex.species %></h1>
         <%= cl_image_tag @pokemon.pokedex.artwork.key, height: 500, width: 500, crop: :fill %>
       </div>
-
       <div class="card-body">
         <h5 class="card-title"><%= @pokemon.name %></h5>
         <div class="card-text">
           <p>description: <br><%= @pokemon.description %></p>
         </div>
-        <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %></h2>
+        <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %> / day</h2>
         <p>owner: <%= @pokemon.user.username.capitalize %></p>
         <div class="container card-btn">
           <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class:'btn btn-primary rounded' %>
+        </div>
       </div>
     </div>
   </div>

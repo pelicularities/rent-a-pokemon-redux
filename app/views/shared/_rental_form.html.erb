@@ -7,7 +7,7 @@
         <li>Owner: <%= @pokemon.user.username %></li>
         <li>Species: <%= @pokemon.pokedex.species %></li>
         <li>Location: <%= @pokemon.location %></li>
-        <li><strong>Price: <%= @pokemon.price %></strong></li>
+        <li><strong>Price: $ <%= @pokemon.price.to_i %> / day</strong></li>
       </ul>
       <div class="col-6">
         <%= f.input :start_date, as: :string, type: :text %>
@@ -15,6 +15,9 @@
       <div class="col-6">
         <%= f.input :end_date, as: :string, type: :text %>
       </div>
+      <h2 class="my-3">
+        Total: <span id="total_price" data-price="<%= @pokemon.price.to_i %>">$0</span>
+      </h2>
       <%= f.submit 'Rent this Pokemon', class: 'btn btn-primary' %>
     <% end %>
   <% else %>

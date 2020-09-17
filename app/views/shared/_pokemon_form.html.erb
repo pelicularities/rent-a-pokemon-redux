@@ -1,7 +1,7 @@
 <%= simple_form_for @pokemon do |f| %>
 <%= f.input :name %>
 <%= f.input :description %>
-<%= f.input :price %>
+<%= f.input :price, label: 'Price per day:' %>
 <%= f.input :location %>
 <%= f.association :pokedex %>
 <%= f.submit %>
