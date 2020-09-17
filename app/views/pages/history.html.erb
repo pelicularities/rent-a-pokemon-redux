@@ -1,4 +1,4 @@
-<div class="p-5 w-75 mx-auto">
+<div class="p-3 mx-auto">
   <h1>My Rentals</h1>
   <ul class="nav nav-pills justify-content-center" id="time-tabs" role="tablist">
     <li class="nav-item" role="presentation">
@@ -25,12 +25,56 @@
       <!-- Upcoming tabs content -->
       <div class="tab-content" id="upcoming-tab-content">
         <!-- Upcoming rentals from others -->
-        <div class="tab-pane fade show active" id="upcoming-from" role="tabpanel" aria-labelledby="upcoming-from">
-          Upcoming rentals from others
+        <div class="tab-pane fade show active container" id="upcoming-from" role="tabpanel" aria-labelledby="upcoming-from">
+          <div class="row">
+            <% if @rentals[:upcoming][:from].present? %>
+              <% @rentals[:upcoming][:from].each do |rental| %>
+                <div class="col-xl-4 col-lg-6 col-xs-12">
+                  <div class="card rounded border-primary" style="width: 18rem;">
+                    <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= rental.pokemon.name %></h5>
+                      <div class="card-text">
+                        <strong>From:</strong> $ <%= rental.start_date %> <br>
+                        <strong>To:</strong> $ <%= rental.end_date %> <br>
+                        <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+                        <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+                        <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              You have no upcoming rentals from other users.
+            <% end %>
+          </div>
         </div>
         <!-- Upcoming rentals to others -->
-        <div class="tab-pane fade" id="upcoming-to" role="tabpanel" aria-labelledby="upcoming-to">
-          Upcoming rentals to others
+        <div class="tab-pane fade container" id="upcoming-to" role="tabpanel" aria-labelledby="upcoming-to">
+          <div class="row">
+            <% if @rentals[:upcoming][:to].present? %>
+              <% @rentals[:upcoming][:to].each do |rental| %>
+                <div class="col-xl-4 col-lg-6 col-xs-12">
+                  <div class="card rounded border-primary" style="width: 18rem;">
+                    <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= rental.pokemon.name %></h5>
+                      <div class="card-text">
+                        <strong>From:</strong> $ <%= rental.start_date %> <br>
+                        <strong>To:</strong> $ <%= rental.end_date %> <br>
+                        <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+                        <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+                        <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              You have no upcoming rentals to other users.
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -47,12 +91,56 @@
       <!-- Present tabs content -->
       <div class="tab-content" id="present-tab-content">
         <!-- Present rentals from others -->
-        <div class="tab-pane fade show active" id="present-from" role="tabpanel" aria-labelledby="present-from">
-          Active rentals from others
+        <div class="tab-pane fade show active container" id="present-from" role="tabpanel" aria-labelledby="present-from">
+          <div class="row">
+            <% if @rentals[:present][:from].present? %>
+              <% @rentals[:present][:from].each do |rental| %>
+                <div class="col-xl-4 col-lg-6 col-xs-12">
+                  <div class="card rounded border-primary" style="width: 18rem;">
+                    <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= rental.pokemon.name %></h5>
+                      <div class="card-text">
+                        <strong>From:</strong> $ <%= rental.start_date %> <br>
+                        <strong>To:</strong> $ <%= rental.end_date %> <br>
+                        <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+                        <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+                        <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              You have no active rentals from other users.
+            <% end %>
+          </div>
         </div>
         <!-- Present rentals to others -->
-        <div class="tab-pane fade" id="present-to" role="tabpanel" aria-labelledby="present-to">
-          Active rentals to others
+        <div class="tab-pane fade container" id="present-to" role="tabpanel" aria-labelledby="present-to">
+          <div class="row">
+            <% if @rentals[:present][:to].present? %>
+              <% @rentals[:present][:to].each do |rental| %>
+                <div class="col-xl-4 col-lg-6 col-xs-12">
+                  <div class="card rounded border-primary" style="width: 18rem;">
+                    <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= rental.pokemon.name %></h5>
+                      <div class="card-text">
+                        <strong>From:</strong> $ <%= rental.start_date %> <br>
+                        <strong>To:</strong> $ <%= rental.end_date %> <br>
+                        <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+                        <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+                        <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              You have no active rentals to other users.
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
@@ -69,32 +157,58 @@
       <!-- Present tabs content -->
       <div class="tab-content" id="past-tab-content">
         <!-- Present rentals from others -->
-        <div class="tab-pane fade show active" id="past-from" role="tabpanel" aria-labelledby="past-from">
-          Past rentals from others
+        <div class="tab-pane fade show active container" id="past-from" role="tabpanel" aria-labelledby="past-from">
+          <div class="row">
+            <% if @rentals[:past][:from].present? %>
+              <% @rentals[:past][:from].each do |rental| %>
+                <div class="col-xl-4 col-lg-6 col-xs-12">
+                  <div class="card rounded border-primary" style="width: 18rem;">
+                    <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= rental.pokemon.name %></h5>
+                      <div class="card-text">
+                        <strong>From:</strong> $ <%= rental.start_date %> <br>
+                        <strong>To:</strong> $ <%= rental.end_date %> <br>
+                        <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+                        <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+                        <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              You have no past rentals from other users.
+            <% end %>
+          </div>
         </div>
         <!-- Present rentals to others -->
-        <div class="tab-pane fade" id="past-to" role="tabpanel" aria-labelledby="past-to">
-          Past rentals to others
+        <div class="tab-pane fade container" id="past-to" role="tabpanel" aria-labelledby="past-to">
+          <div class="row">
+            <% if @rentals[:past][:to].present? %>
+              <% @rentals[:past][:to].each do |rental| %>
+                <div class="col-xl-4 col-lg-6 col-xs-12">
+                  <div class="card rounded border-primary" style="width: 18rem;">
+                    <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+                    <div class="card-body">
+                      <h5 class="card-title"><%= rental.pokemon.name %></h5>
+                      <div class="card-text">
+                        <strong>From:</strong> $ <%= rental.start_date %> <br>
+                        <strong>To:</strong> $ <%= rental.end_date %> <br>
+                        <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+                        <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+                        <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% else %>
+              You have no past rentals to other users.
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
-<!--
-<div class="container">
-  <ul>
-  <% @rentals.order(start_date: :desc).each do |rental| %>
-    <li><strong><%= rental.start_date %> to <%= rental.end_date %></strong>
-      <ul class="list-unstyled">
-        <li><%= cl_image_tag rental.pokemon.pokedex.artwork.key, width: 200, height: 200 %></li>
-        <li>Name: <%= rental.pokemon.name %></li>
-        <li>Species: <%= rental.pokemon.pokedex.species %></li>
-        <li>Price: <%= rental.price %></li>
-        <li>Rented from: <%= rental.user.username %></li>
-      </ul>
-    </li>
-  <% end %>
-  </ul>
-</div>
--->
