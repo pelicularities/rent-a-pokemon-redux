@@ -18,7 +18,7 @@ class RentalsController < ApplicationController
     if rental.save
       redirect_to history_path
     else
-      render new
+      render :new
     end
   end
   
