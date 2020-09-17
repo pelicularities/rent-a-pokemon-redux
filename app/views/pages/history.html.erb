@@ -1,16 +1,9 @@
 <div class="p-3 mx-auto">
   <h1>My Rentals</h1>
-  <ul class="nav nav-pills justify-content-center" id="time-tabs" role="tablist">
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="upcoming-tab" data-toggle="tab" href="#upcoming" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link active" id="present-tab" data-toggle="tab" href="#present" role="tab" aria-controls="present" aria-selected="false">Present</a>
-    </li>
-    <li class="nav-item" role="presentation">
-      <a class="nav-link" id="past-tab" data-toggle="tab" href="#past" role="tab" aria-controls="past" aria-selected="false">Past</a>
-    </li>
-  </ul>
+
+  <!-- navigation tabs -->
+  <%= render 'shared/history_tabs' %>
+
   <div class="tab-content mt-3" id="rental-tab-content">
     <!-- Upcoming tabs -->
     <div class="tab-pane fade" id="upcoming" role="tabpanel" aria-labelledby="upcoming">
@@ -173,6 +166,7 @@
                         <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
                         <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
                       </div>
+                      <%= link_to 'Write review', new_rental_review_path(rental), class:'btn btn-primary' %>
                     </div>
                   </div>
                 </div>

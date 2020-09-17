@@ -1,35 +1,41 @@
 
-<div class = 'container'>
+<div class = ''>
   <!-- put the pokedex -->
 
-  
 
-  <div class="card">
-<div class="heading">
-  <h1><%= @pokemon.pokedex.species %></h1>
-  </div>
-  <%= cl_image_tag @pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
-    <div class="card-body">
-        <h5 class="card-title"><%= @pokemon.name %></h5>
-      <div class="card-text">
-        <p>description: <br><%= @pokemon.description %></p>
+  <div class="container">
+    <div class="card">
+      <div class="heading">
+        <h1><%= @pokemon.pokedex.species %></h1>
+        <%= cl_image_tag @pokemon.pokedex.artwork.key, height: 500, width: 500, crop: :fill %>
       </div>
-      <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %></h2>
-      <p>owner: <%= @pokemon.user.username.capitalize %></p>
-      <div class="container card-btn">
-      <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class:'btn btn-primary rounded' %>
-      
+
+      <div class="card-body">
+        <h5 class="card-title"><%= @pokemon.name %></h5>
+        <div class="card-text">
+          <p>description: <br><%= @pokemon.description %></p>
+        </div>
+        <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %></h2>
+        <p>owner: <%= @pokemon.user.username.capitalize %></p>
+        <div class="container card-btn">
+          <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class:'btn btn-primary rounded' %>
       </div>
     </div>
-    
   </div>
-  <!-- here to put a button "I want it!" -->
+
+
+
   <div class= 'back-btn'>
-
   </div>
-
-
-
+</div>
+<div class="container">
+  <ul>
+  <% @pokemon.reviews.each do |review| %>
+    <li>
+      <%= review.description %>
+    </li>
+  <% end %>
+  </ul>
 </div>
 <div class="container">
 <%= link_to "Go Back", pokemons_path %>
