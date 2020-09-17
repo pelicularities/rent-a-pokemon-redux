@@ -3,14 +3,50 @@
 
 .container {
   display: flex;
+  position: relative;
 }
+
+.card {
+  margin: 8px;
+}
+
+
+
+
 
 .form-control{
-  background-color: white;
   width: 500px;
-  border-radius: 22px
+  border-radius: 22px;
+  background-image: linear-gradient(to top left,#ff8a00,#e52e71)!important;
+  color: white;
+  display: inline-block;
+  // font-family: inherit;
+  font-weight: 700;
+  border: 0;
+  white-space: nowrap;
+  padding: 1rem 1.5rem;
+  line-height: 1.4;
+  text-align: left;
+  transition: .07s;
+  position: relative;
+  text-decoration: none!important;
+  flex: 1 1 0%;
 }
 
-.btn btn-search {
-  background-color: yellow
+
+.grid-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+  margin-top: 40px;
+  padding-bottom: 20px
+}
+
+.card-text{
+  margin-bottom: 20px
+}
+
+.card-image .p-image {
+  // -webkit-filter: drop-shadow(5px 5px 5px black);
+  filter: drop-shadow(10px 10px 10px green);
 }

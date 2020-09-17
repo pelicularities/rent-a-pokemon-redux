@@ -1,40 +1,48 @@
 
-<div class= "p-3">
+<div style="background-image: url();">
+
+<div class = 'p-5'>
   <h1>Pokemon For Rent</h1>
 </div>
+
 
 <div class= 'container'>
   <%= form_tag pokemons_path, method: :get do %>
   <%= text_field_tag :query,
   params[:query],
   class: "form-control",
-    placeholder: "Find a pokemon"%>
-    <%= submit_tag "Search", class: "btn btn-secondary" %>
+    placeholder: "Find your pokemon"%>
+    <button class="btn btn-flat"><i class="fas fa-search"></i></button></div>
 
     <% if params[:query].present? %>
-    <%= link_to "Go Back", pokemons_path, class: "btn btn-secondary" %>
+    <%= link_to "Go Back", pokemons_path, class: "btn btn-search" %>
     <% end %>
     <% end %>
 </div>
 
+
   <div class="container">
     <div class="grid-card">
       <% @pokemon.each do |pokemon| %>
-      <div class="card rounded border-primary" style="width: 18rem;">
-        <%= cl_image_tag pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+      <div class="card-image" style="width: 16rem;">
+        <%= cl_image_tag pokemon.pokedex.artwork.key, class:'p-image', height: 200, width: 200, crop: :fill %>
         <div class="card-body">
           <h5 class="card-title"><%= pokemon.name %></h5>
           <div class="card-text">
-            <strong>description:</strong> <br>
-            <%= pokemon.description %> <br>
-            <strong>price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
-            <strong>pokedex:</strong> <%= pokemon.pokedex.species %> <br>
-            <strong>user:</strong> <%= pokemon.user.username.capitalize %>
-            </div>
-          <%= link_to 'Rent Now!', new_pokemon_rental_path(pokemon), class:'btn btn-primary' %>
-          <%= link_to 'More details', pokemon_path(pokemon), class:'btn btn-primary' %>
+<!--        <strong> What it is like:</strong> <br>
+            <%= pokemon.description %> <br> -->
+            <strong>Price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
+            <strong>Pokedex:</strong> <%= pokemon.pokedex.species %> <br>
+<!--             <strong>Owner:</strong> <%= pokemon.user.username.capitalize %> -->
+          </div>
+          <div class='grid-card' style='display: flex'>
+          <%= link_to 'Rent NOW!', new_pokemon_rental_path(pokemon), class:'btn', style:'background-color: #ff8a00; color: white;'  %>
+          <%= link_to 'Details', pokemon_path(pokemon), class:'btn', style:'background-color: grey; color: white;' %>
         </div>
+      </div>
       </div>
       <% end %>
     </div>
   </div>
+</div>
+
