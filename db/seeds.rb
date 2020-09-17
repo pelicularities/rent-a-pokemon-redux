@@ -72,7 +72,7 @@ pokemons = [
     price: 1000,
     location: 'Pallet Town',
     pokedex: Pokedex.find_by(species: 'Pikachu'),
-    user: User.all.sample
+    user: User.find_by(username: 'grace')
   },
   {
     name: 'Eevee',
@@ -80,7 +80,7 @@ pokemons = [
     price: 1100,
     location: 'Pallet Town',
     pokedex: Pokedex.find_by(species: 'Eevee'),
-    user: User.all.sample
+    user: User.find_by(username: 'grace')
   },
   {
     name: 'Bulbasaur',
@@ -88,7 +88,7 @@ pokemons = [
     price: 1200,
     location: 'Celadon City',
     pokedex: Pokedex.find_by(species: 'Bulbasaur'),
-    user: User.all.sample
+    user: User.find_by(username: 'grace')
   },
   {
     name: 'Charmander',
@@ -96,7 +96,7 @@ pokemons = [
     price: 1000,
     location: 'Cinnabar Island',
     pokedex: Pokedex.find_by(species: 'Charmander'),
-    user: User.all.sample
+    user: User.find_by(username: 'stephen')
   },
   {
     name: 'Squirtle',
@@ -104,7 +104,7 @@ pokemons = [
     price: 1500,
     location: 'Cerulean City',
     pokedex: Pokedex.find_by(species: 'Squirtle'),
-    user: User.all.sample
+    user: User.find_by(username: 'allen')
   }
 ]
 
@@ -114,5 +114,25 @@ end
 
 
 # Rentals - 2
+rentals = [
+  {
+    start_date: "Thu, 01 Jun 2020",
+    end_date: "Wed, 14 Jun 2020",
+    price: 1000,
+    pokemon: Pokemon.find_by(name: 'Squirtle'),
+    user: User.find_by(username: 'zack')
+  },
+  {
+    start_date: "Thu, 01 Jun 2020",
+    end_date: "Wed, 14 Jun 2020",
+    price: 1000,
+    pokemon: Pokemon.find_by(name: 'Pikachu'),
+    user: User.find_by(username: 'zack')
+  }
+]
+
+rentals.each do |rental|
+  Rental.create!(rental)
+end
 
 # Reviews - 2 

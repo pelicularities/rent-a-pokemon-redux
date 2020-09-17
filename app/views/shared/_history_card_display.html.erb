@@ -1,0 +1,17 @@
+<% @rentals[:upcoming][:from].each do |rental| %>
+    <div class="col-xl-4 col-lg-6 col-xs-12">
+        <div class="card rounded border-primary" style="width: 18rem;">
+        <%= cl_image_tag rental.pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %>
+        <div class="card-body">
+            <h5 class="card-title"><%= rental.pokemon.name %></h5>
+            <div class="card-text">
+            <strong>From:</strong> <%= rental.start_date %> <br>
+            <strong>To:</strong> <%= rental.end_date %> <br>
+            <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
+            <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
+            <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+            </div>
+        </div>
+        </div>
+    </div>
+<% end %>
