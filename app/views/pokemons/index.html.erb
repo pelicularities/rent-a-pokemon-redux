@@ -40,7 +40,7 @@
             <% total += review.rating %>
             <% end %>
             <% if total == 0 %>
-            <strong>Rating:</strong> <%= 0 %> 
+            <strong>Rating:</strong> <%= "no rating" %> 
             <% else %>
             <strong>Rating:</strong> <%= total / pokemon.reviews.length %>
             <% end %>
