@@ -1,5 +1,5 @@
 class RentalsController < ApplicationController
-  before_action :set_pokemon, only: [:new, :create]
+  before_action :set_pokemon, only: [:new, :create, :success]
 
   def new
     @rental = Rental.new
@@ -20,8 +20,12 @@ class RentalsController < ApplicationController
     else
       render :new
     end
+
+    def success
+    end
+
   end
-  
+
   private
   def set_pokemon
     @pokemon = Pokemon.find(params[:pokemon_id])

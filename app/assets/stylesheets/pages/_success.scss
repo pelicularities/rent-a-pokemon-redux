@@ -1,0 +1,44 @@
+
+.container {
+  margin-top: 60px
+}
+
+
+.parent {
+  position: relative;
+  top: 0;
+  left: 0;
+  margin-left: 150px;
+  margin-top: 60px
+}
+.image1 {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: 4px #ff8a00 solid;
+  border-radius: 22px
+}
+.image2 {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  height: 60px;
+  width: 60px;
+  filter: drop-shadow(10px 10px 10px yellow);
+}
+
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   position: absolute;
+}
