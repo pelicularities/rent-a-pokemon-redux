@@ -21,7 +21,11 @@
         <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class:'btn btn-primary rounded' %>
     </div>
     <div class="heading pl-5">
+    <% if (@pokemon.reviews.length == 0) %>
+        <h3><%= @pokemon.name %> has no review</h3>
+    <% else %>
         <h3><%= @pokemon.name %>'s reviews</h3>
+    <% end %>
     </div>
     <div class="card-body">
     <% @pokemon.reviews.each do |review| %>
