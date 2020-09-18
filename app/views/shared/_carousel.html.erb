@@ -1,8 +1,13 @@
-<div class="slides">
-
-<% @pokemon.each do |pokemon| %>
-<div> <%= cl_image_tag pokemon.pokedex.artwork.key, height: 300, width: 300, crop: :fill %> </div>
-<% end %>
-
-
+<h2 class="w-100 text-center my-3">Check out our latest Pokemon available for rent</h2>
+<div class="d-flex justify-content-center">
+  <% @pokemon.each do |pokemon| %>
+    <div class="card" style="width: 18rem;">
+      <%= cl_image_tag pokemon.pokedex.artwork.key, class:'p-image', height: 300, width: 300, crop: :fill %>
+      <div class="card-body text-center">
+        <h5 class="card-title"><%=pokemon.name%></h5>
+        <p class="card-text"><%=pokemon.description%></p>
+        <%= link_to 'I choose you!', pokemon_path(pokemon), class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
 </div>
