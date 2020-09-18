@@ -1,3 +1,5 @@
+require 'date'
+
 class PokemonsController < ApplicationController
   before_action :set_pokemon, only: [:show, :edit, :update, :destroy]
 
@@ -20,6 +22,7 @@ class PokemonsController < ApplicationController
 
 
 def show
+
 end
 
 def new

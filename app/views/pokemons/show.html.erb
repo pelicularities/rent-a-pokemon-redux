@@ -1,26 +1,12 @@
 
 <div class = ''>
   <!-- put the pokedex -->
-
-
   <div class="container">
-    <div class="card">
-      <div class="heading">
-        <h1><%= @pokemon.pokedex.species %></h1>
-        <%= cl_image_tag @pokemon.pokedex.artwork.key, height: 500, width: 500, crop: :fill %>
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"><%= @pokemon.name %></h5>
-        <div class="card-text">
-          <p>description: <br><%= @pokemon.description %></p>
-        </div>
-        <h2 class="card-pokemon-pricing">$ <%= @pokemon.price.to_i.to_s %> / day</h2>
-        <p>owner: <%= @pokemon.user.username.capitalize %></p>
-        <div class="container card-btn">
-          <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class:'btn btn-primary rounded' %>
-        </div>
-      </div>
-    </div>
+  <%= link_to "Go Back", pokemons_path %>
+  </div>
+
+  <div class="container pt-5">
+    <%= render "shared/pokemon_show" %>
   </div>
 
 
@@ -28,16 +14,7 @@
   <div class= 'back-btn'>
   </div>
 </div>
-<div class="container">
-  <ul>
-  <% @pokemon.reviews.each do |review| %>
-    <li>
-      <%= review.description %> <br>
-      <%= review.rating %>
-    </li>
-  <% end %>
-  </ul>
-</div>
+
 <div class="container">
 <%= link_to "Go Back", pokemons_path %>
 </div>
