@@ -16,12 +16,12 @@ Pokemon.destroy_all
 Rental.destroy_all
 
 baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
-# ids = (1..45).to_a
-# [133, 134, 135, 136, 151].each do |id|
-#   ids << id
-# end
+ids = (1..45).to_a
+[133, 134, 135, 136, 151].each do |id|
+  ids << id
+end
 
-ids = [1, 2, 3, 150, 151]
+# ids = [1, 2, 3, 150, 151]
 
 puts 'starting Pokedex seeding...'
 
@@ -99,7 +99,7 @@ end
   )
   loop do
     pokemon.user = User.all.sample
-    break unless pokemon.user == User.find_by_username('grace')  # if owner is also renter, get a new renter
+    break unless pokemon.user == User.find_by_username('grace')
   end
   pokemon.save!
   puts "seeded #{pokemon.name} (#{pokemon.pokedex.species}, #{pokemon.user.username})"
@@ -109,6 +109,8 @@ puts "seeded Pokemon!"
 
 puts "seeding rentals..."
 
+grace = User.find_by_username('grace')
+
 # Rentals - 12
 4.times do
   rental = Rental.new(
@@ -116,9 +118,13 @@ puts "seeding rentals..."
     end_date: "2020-06-08",
     pokemon: Pokemon.all.sample
   )
-  loop do
-    rental.user = User.all.sample
-    break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
+  if rental.pokemon.user == grace
+    loop do
+      rental.user = User.all.sample
+      break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
+    end
+  else
+    rental.user = grace
   end
   rental.price = rental.pokemon.price * Faker::Number.between(from: 1, to: 10)
   rental.save!
@@ -130,9 +136,13 @@ end
     end_date: "2020-09-22",
     pokemon: Pokemon.all.sample
   )
-  loop do
-    rental.user = User.all.sample
-    break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
+  if rental.pokemon.user == grace
+    loop do
+      rental.user = User.all.sample
+      break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
+    end
+  else
+    rental.user = grace
   end
   rental.price = rental.pokemon.price * Faker::Number.between(from: 1, to: 10)
   rental.save!
@@ -144,9 +154,13 @@ end
     end_date: "2020-12-31",
     pokemon: Pokemon.all.sample
   )
-  loop do
-    rental.user = User.all.sample
-    break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
+  if rental.pokemon.user == grace
+    loop do
+      rental.user = User.all.sample
+      break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
+    end
+  else
+    rental.user = grace
   end
   rental.price = rental.pokemon.price * Faker::Number.between(from: 1, to: 10)
   rental.save!
