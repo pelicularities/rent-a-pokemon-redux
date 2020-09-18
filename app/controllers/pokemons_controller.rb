@@ -12,10 +12,10 @@ class PokemonsController < ApplicationController
         OR users.username ILIKE :query \
       "
       @pokemon = Pokemon.joins(:pokedex, :user).where(sql_query, query: "%#{params[:query]}%")
-
     else
       @pokemon = Pokemon.all
     end
+
   end
 
 

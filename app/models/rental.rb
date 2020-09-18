@@ -1,7 +1,7 @@
 class Rental < ApplicationRecord
   belongs_to :pokemon
   belongs_to :user
-  has_one :review
+  has_one :review, dependent: :destroy
 
   # validation code for start and end dates
   # adapted from: 

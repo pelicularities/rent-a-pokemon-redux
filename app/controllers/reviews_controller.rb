@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       if review.save
         redirect_to pokemon_path(@rental.pokemon)
       else
-        render new
+        render :new
       end
     end
     
