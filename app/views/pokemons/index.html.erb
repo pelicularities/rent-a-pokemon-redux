@@ -39,7 +39,7 @@
             <% pokemon.reviews.each do |review| %>
             <% total += review.rating %>
             <% end %>
-            <% if total == nil %>
+            <% if pokemon.reviews.length == 0 %>
             <strong>Rating:</strong> <%= "no rating" %> 
             <% else %>
             <strong>Rating:</strong> <%= total / pokemon.reviews.length %>
