@@ -8,7 +8,7 @@
 require 'open-uri'
 
 # Pokedex
-
+Review.destroy_all
 Pokedex.destroy_all
 User.destroy_all
 Pokemon.destroy_all
@@ -105,6 +105,14 @@ pokemons = [
     location: 'Cerulean City',
     pokedex: Pokedex.find_by(species: 'Squirtle'),
     user: User.find_by(username: 'allen')
+  },
+  {
+    name: "Zack's Bulbasaur",
+    description: 'A gross Poke Zombie',
+    price: 12,
+    location: 'Raccoon City',
+    pokedex: Pokedex.find_by(species: 'Bulbasaur'),
+    user: User.find_by(username: 'zack')
   }
 ]
 
@@ -128,6 +136,13 @@ rentals = [
     price: 1000,
     pokemon: Pokemon.find_by(name: 'Pikachu'),
     user: User.find_by(username: 'zack')
+  },
+  {
+    start_date: "Thu, 01 May 2020",
+    end_date: "Wed, 02 May 2020",
+    price: 12,
+    pokemon: Pokemon.find_by(name: "Zack's Bulbasaur"),
+    user: User.find_by(username: 'grace')
   }
 ]
 
@@ -136,3 +151,14 @@ rentals.each do |rental|
 end
 
 # Reviews - 2 
+reviews = [
+  {
+    description: "This poke sucks!",
+    rating: 5,
+    rental: Rental.find_by(start_date: "Thu, 01 May 2020")
+  }
+]
+
+reviews.each do |review|
+  Review.create!(review)
+end

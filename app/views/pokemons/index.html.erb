@@ -33,7 +33,18 @@
             <%= pokemon.description %> <br> -->
             <strong>Price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
             <strong>Pokedex:</strong> <%= pokemon.pokedex.species %> <br>
-<!--             <strong>Owner:</strong> <%= pokemon.user.username.capitalize %> -->
+            <strong>Owner:</strong> <%= pokemon.user.username.capitalize %> <br>
+
+            <% total = 0 %>
+            <% pokemon.reviews.each do |review| %>
+            <% total += review.rating %>
+            <% end %>
+            <% if pokemon.reviews.length == 0 %>
+            <strong>Rating:</strong> <%= "no rating" %> 
+            <% else %>
+            <strong>Rating:</strong> <%= total / pokemon.reviews.length %>
+            <% end %>
+
           </div>
           <div class='grid-card' style='display: flex'>
           <%= link_to 'Rent NOW!', new_pokemon_rental_path(pokemon), class:'btn', style:'background-color: #ff8a00; color: white;'  %>
