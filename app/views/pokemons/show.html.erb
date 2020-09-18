@@ -32,7 +32,8 @@
   <ul>
   <% @pokemon.reviews.each do |review| %>
     <li>
-      <%= review.description %>
+      <%= review.description %> <br>
+      <%= review.rating %>
     </li>
   <% end %>
   </ul>
