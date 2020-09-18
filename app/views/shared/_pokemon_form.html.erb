@@ -3,6 +3,6 @@
 <%= f.input :description %>
 <%= f.input :price, label: 'Price per day:' %>
 <%= f.input :location %>
-<%= f.association :pokedex %>
+<%= f.association :pokedex, collection: Pokedex.order('id ASC') %>
 <%= f.submit %>
 <% end %>
