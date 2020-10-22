@@ -11,8 +11,6 @@
 }
 
 
-
-
 .form-find{
   width: 500px;
   border-radius: 22px;
@@ -48,4 +46,8 @@
 .card-image .p-image {
   // -webkit-filter: drop-shadow(5px 5px 5px black);
   filter: drop-shadow(10px 10px 10px green);
+}
+
+.bg-navbar {
+  background-color: $dark-blue;
 }
