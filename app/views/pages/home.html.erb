@@ -1,15 +1,8 @@
-
-
-<div class="banner" style="background-image: url(https://teespring-storecontent.s3.amazonaws.com/-oWEewDfiErZACH7p3bSWA_store_banner_image?1476649917337);">
-  <div class="container">
-    <div class="col-sm-6">
+<div class="banner" style="background-image: url('<%= image_path('pokemon_background.png') %>')">
+  <div class="bg-transparent-dark w-100 h-100 d-flex align-items-center justify-content-center">
+    <div class="text-center">
       <h1>Welcome to the <strong>Pokemon</strong> world!</h1>
-      <div class ="container">
-        <%= link_to 'Hunt now', pokemons_path, class:'btn', style:'background-color: #ff8a00; color: white; border-radius: 22px' %>
-      </div>
+      <%= link_to 'Hunt now', pokemons_path, class:'btn btn-primary' %>
     </div>
   </div>
 </div>
-
-<%= render 'shared/carousel' %>
-

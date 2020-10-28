@@ -1,59 +1,77 @@
-
-<div style="background-image: url();">
-
-<div class = 'p-5'>
-  <h1>Pokemon For Rent</h1>
-</div>
-
-
-<div class= 'container'>
-  <%= form_tag pokemons_path, method: :get do %>
-  <%= text_field_tag :query,
-  params[:query],
-  class: "form-control form-find",
-    placeholder: "Find your pokemon"%>
-    <button class="btn btn-flat"><i class="fas fa-search"></i></button></div>
-
-    <% if params[:query].present? %>
-    <%= link_to "Go Back", pokemons_path, class: "btn btn-search" %>
-    <% end %>
-    <% end %>
-</div>
-
-
-  <div class="container">
-    <div class="grid-card">
-      <% @pokemon.each do |pokemon| %>
-      <div class="card-image" style="width: 16rem;">
-        <%= cl_image_tag pokemon.pokedex.artwork.key, class:'p-image', height: 200, width: 200, crop: :fill %>
-        <div class="card-body">
-          <h5 class="card-title"><%= pokemon.name %></h5>
-          <div class="card-text">
-<!--        <strong> What it is like:</strong> <br>
-            <%= pokemon.description %> <br> -->
-            <strong>Price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
-            <strong>Pokedex:</strong> <%= pokemon.pokedex.species %> <br>
-            <strong>Owner:</strong> <%= pokemon.user.username.capitalize %> <br>
-
-            <% total = 0 %>
-            <% pokemon.reviews.each do |review| %>
-            <% total += review.rating %>
-            <% end %>
-            <% if pokemon.reviews.length == 0 %>
-            <strong>Rating:</strong> <%= "no rating" %> 
-            <% else %>
-            <strong>Rating:</strong> <%= total / pokemon.reviews.length %>
-            <% end %>
-
+<h1 class="p-5">Pok&eacute;mon For Rent</h1>
+<div class="container">
+  <div class="row mb-3">
+    <div class="col-12">
+      <%= form_tag pokemons_path, method: :get do %>
+        <div class="input-group">
+          <%= text_field_tag :query,
+          params[:query],
+          class: 'form-control',
+            placeholder: 'Find your Pokemon' %>
+            <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+          <div class="input-group-append">
           </div>
-          <div class='grid-card' style='display: flex'>
-          <%= link_to 'Rent NOW!', new_pokemon_rental_path(pokemon), class:'btn', style:'background-color: #ff8a00; color: white;'  %>
-          <%= link_to 'Details', pokemon_path(pokemon), class:'btn', style:'background-color: grey; color: white;' %>
         </div>
-      </div>
-      </div>
       <% end %>
     </div>
+  </div>
+  <% if params[:query].present? %>
+    <div class="mb-3">
+      <%= link_to "< Back to All Pokemon", pokemons_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class="row">
+    <% @pokemon.each do |pokemon| %>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card mb-3">
+          <%= cl_image_tag pokemon.pokedex.artwork.key, class:'card-img-top', crop: :fill %>
+          <div class="card-body">
+            <h5 class="card-title"><%= pokemon.name %></h5>
+            <div class="card-text mb-3">
+              <strong>Price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
+              <strong>Pokedex:</strong> <%= pokemon.pokedex.species %> <br>
+              <strong>Owner:</strong> <%= pokemon.user.username.capitalize %> <br>
+
+              <% total = 0 %>
+              <% pokemon.reviews.each do |review| %>
+              <% total += review.rating %>
+              <% end %>
+              <% if pokemon.reviews.length == 0 %>
+              <strong>Rating:</strong> <%= "no rating" %> 
+              <% else %>
+              <strong>Rating:</strong> 
+                <%
+                  # allow half stars for rating, so internally average ratings will be measured out of 10
+                  rating = (total.fdiv(pokemon.reviews.length) * 2).round
+                  full_stars = rating / 2
+                  half_stars = rating % 2
+                  empty_stars = 5 - full_stars - half_stars
+                %>
+
+                <% full_stars.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+
+                <% half_stars.times do %>
+                  <i class="fas fa-star-half-alt"></i>
+                <% end %>
+
+                <% empty_stars.times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                (<%= pokemon.reviews.length %>)
+              <% end %>
+
+            </div>
+
+            <div class="text-center">
+              <%= link_to 'Rent NOW!', new_pokemon_rental_path(pokemon), class: 'btn btn-primary'  %>
+              <%= link_to 'Details', pokemon_path(pokemon), class:'btn btn-secondary' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 
