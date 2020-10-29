@@ -2,6 +2,8 @@ class RentalsController < ApplicationController
   before_action :set_pokemon, only: [:new, :create, :success]
 
   def new
+    redirect_to pokemons_path if current_user.id == @pokemon.user_id
+    
     @rental = Rental.new
   end
 

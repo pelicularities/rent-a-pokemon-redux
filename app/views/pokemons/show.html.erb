@@ -11,7 +11,9 @@
         <h1><%= @pokemon.name %></h1>
         <%= cl_image_tag @pokemon.pokedex.artwork.key, class:'card-img-top', crop: :fill %>
         <h2>$ <%= @pokemon.price.to_i.to_s %> / day</h2>
-        <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class: 'btn btn-primary' %>
+        <% unless current_user.id == @pokemon.user_id %>
+          <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class: 'btn btn-primary' %>
+        <% end %>
         <div class="text-left mt-3">
           <p><strong>Owner:</strong> <%= @pokemon.user.username.capitalize %></p>
           <p><strong>Species:</strong> <%= @pokemon.pokedex.species %></p>
