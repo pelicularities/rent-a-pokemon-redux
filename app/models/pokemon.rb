@@ -10,4 +10,9 @@ class Pokemon < ApplicationRecord
       { from: range[0], to: range[1] }
     end
   end
+
+  def avg_rating
+    # avg rating is out of 5, rounded to nearest half
+    (reviews.map { |review| review.rating }.reduce(:+).fdiv(reviews.length) * 2).round.fdiv(2)
+  end
 end

@@ -1,19 +1,73 @@
-
-<div class = ''>
-
-  <div class="container pt-0 align-top">
-    <%= render "shared/pokemon_show" %>
-  </div>
-
-
-
-  <div class= 'back-btn'>
-  </div>
-</div>
-
 <div class="container">
-<%= link_to "Go Back", pokemons_path %>
+  <div class="row">
+    <div class="col-12">
+      <%= link_to '< Back to all Pokemon', pokemons_path, class: 'btn btn-primary my-3' %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6 pb-3">
+      <div class="card px-5 py-3 text-center bg-light">
+        <h1><%= @pokemon.name %></h1>
+        <%= cl_image_tag @pokemon.pokedex.artwork.key, class:'card-img-top', crop: :fill %>
+        <h2>$ <%= @pokemon.price.to_i.to_s %> / day</h2>
+        <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class: 'btn btn-primary' %>
+        <div class="text-left mt-3">
+          <p><strong>Owner:</strong> <%= @pokemon.user.username.capitalize %></p>
+          <p><strong>Species:</strong> <%= @pokemon.pokedex.species %></p>
+          <p><strong>Description:</strong> <%= @pokemon.description %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-6 text-center pb-3">
+      <div class="p-3 bg-light">
+        <h3><%= @pokemon.name %>'s reviews</h3>
+        <% if (@pokemon.reviews.length == 0) %>
+          <%= @pokemon.name %> has no reviews.
+        <% else %>
+          <p>
+            <%
+              full_stars = @pokemon.avg_rating.floor
+              half_stars = (@pokemon.avg_rating % 1).zero? ? 0 : 1
+              empty_stars = 5 - full_stars - half_stars
+            %>
+
+            <% full_stars.times do %>
+              <i class="fas fa-star"></i>
+            <% end %>
+
+            <% half_stars.times do %>
+              <i class="fas fa-star-half-alt"></i>
+            <% end %>
+
+            <% empty_stars.times do %>
+              <i class="far fa-star"></i>
+            <% end %>
+            (<%= @pokemon.reviews.length %>)
+          </p>
+          <% @pokemon.reviews.each do |review| %>
+            <div class="card w-100 text-left review">
+              <div class="card-body">
+                <h5 class="card-title"><%= review.rental.user.username.capitalize %></h5>
+                <h6 class="card-subtitle mb-2">
+                  <% empty_stars = 5 - review.rating %>
+
+                  <% review.rating.times do %>
+                    <i class="fas fa-star"></i>
+                  <% end %>
+
+                  <% empty_stars.times do %>
+                    <i class="far fa-star"></i>
+                  <% end %>
+                </h6>
+                <p class="card-text"><%= review.description %></p>
+                <span class="text-muted"><%= review.created_at.strftime("%b %e, %Y at %I:%M %p") %></span>
+              </div>
+            </div>
+          <% end %>
+        <% end %> 
+      </div>
+    </div>
+  </div>
 </div>
-
-<% #= link_to 'I want it!', new_pokemon_rental_path(pokemon) %>
-
