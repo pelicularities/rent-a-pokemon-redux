@@ -44,26 +44,19 @@ puts 'seeding users...'
 # Users - 4
 users = [
   {
-    username: 'grace',
-    email: 'grace@grace.com',
-    password: 'grace123'
-  },
-  {
-    username: 'zack',
-    email: 'zack@zack.com',
-    password: 'zack123'
-  },
-  {
-    username: 'stephen',
-    email: 'stephen@stephen.com',
-    password: 'stephen123'
-  },
-  {
-    username: 'allen',
-    email: 'allen@allen.com',
-    password: 'allen123'
+    username: 'demo',
+    email: 'demo@gmail.com',
+    password: 'demo12345'
   }
 ]
+19.times do 
+  users << {
+    username: Faker::Internet.unique.username
+    email: Faker::Internet.unique.email
+    password: Faker::Internet.password(min_length: 8)
+  }
+end
+
 
 users.each do |user|
   User.create!(user)
@@ -74,19 +67,19 @@ puts "seeded users!"
 
 puts "seeding Pokemon..."
 
-# Pokemon - 12
-3.times do
+# Pokemon - 60
+15.times do
   pokemon = Pokemon.create!(
     name: Faker::Name.unique.first_name,
     description: Faker::Lorem.sentence,
     price: Faker::Number.between(from: 10, to: 120),
     location: Faker::Games::Pokemon.location,
-    user: User.find_by_username('grace'),
+    user: User.find_by_username('demo'),
     pokedex: Pokedex.all.sample
   )
   puts "seeded #{pokemon.name} (#{pokemon.pokedex.species}, #{pokemon.user.username})"
 end
-9.times do
+45.times do
   pokemon = Pokemon.new(
     name: Faker::Name.unique.first_name,
     description: Faker::Lorem.sentence,
@@ -96,7 +89,7 @@ end
   )
   loop do
     pokemon.user = User.all.sample
-    break unless pokemon.user == User.find_by_username('grace')
+    break unless pokemon.user == User.find_by_username('demo')
   end
   pokemon.save!
   puts "seeded #{pokemon.name} (#{pokemon.pokedex.species}, #{pokemon.user.username})"
@@ -106,7 +99,7 @@ puts "seeded Pokemon!"
 
 puts "seeding rentals..."
 
-grace = User.find_by_username('grace')
+demo = User.find_by_username('demo')
 
 # Rentals - 12
 4.times do
@@ -115,13 +108,13 @@ grace = User.find_by_username('grace')
     end_date: "2020-06-08",
     pokemon: Pokemon.all.sample
   )
-  if rental.pokemon.user == grace
+  if rental.pokemon.user == demo
     loop do
       rental.user = User.all.sample
       break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
     end
   else
-    rental.user = grace
+    rental.user = demo
   end
   rental.price = rental.pokemon.price * Faker::Number.between(from: 1, to: 10)
   rental.save!
@@ -133,13 +126,13 @@ end
     end_date: "2020-09-22",
     pokemon: Pokemon.all.sample
   )
-  if rental.pokemon.user == grace
+  if rental.pokemon.user == demo
     loop do
       rental.user = User.all.sample
       break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
     end
   else
-    rental.user = grace
+    rental.user = demo
   end
   rental.price = rental.pokemon.price * Faker::Number.between(from: 1, to: 10)
   rental.save!
@@ -151,13 +144,13 @@ end
     end_date: "2020-12-31",
     pokemon: Pokemon.all.sample
   )
-  if rental.pokemon.user == grace
+  if rental.pokemon.user == demo
     loop do
       rental.user = User.all.sample
       break unless rental.pokemon.user == rental.user  # if owner is also renter, get a new renter
     end
   else
-    rental.user = grace
+    rental.user = demo
   end
   rental.price = rental.pokemon.price * Faker::Number.between(from: 1, to: 10)
   rental.save!
@@ -168,10 +161,26 @@ puts "seeded rentals!"
 puts "seeding reviews..."
 
 # Reviews - 12
+possible_reviews = [
+  {
+    description: 'This Pokemon sucks!',
+    rating: 1
+  },
+  {
+    description: 'Eh, it was kind of okay.',
+    rating: 3
+  },
+  {
+    description: 'This Pokemon is the best!',
+    rating: 5
+  }
+]
+
 Rental.all.each do |rental|
+  review_details = possible_reviews.sample
   review = Review.new(
-    description: ['This Pokemon sucks!', 'This Pokemon is the best!', 'Eh, it was kind of okay.'].sample,
-    rating: Faker::Number.between(from: 0, to: 5),
+    description: review_details[:description],
+    rating: review_details[:rating],
     rental: rental
   )
   review.save!
