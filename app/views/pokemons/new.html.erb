@@ -3,11 +3,11 @@
     <div class="col-10 col-md-8 col-lg-6">
       <h1> List Your Pokémon </h1>
       <%= simple_form_for @pokemon do |f| %>
-        <%= f.input :name, id: 'nameElement' %>
-        <%= f.input :description, id: 'descriptionElement' %>
-        <%= f.input :price, id: 'priceElement', label: 'Price per day:' %>
-        <%= f.input :location, id: 'locationElement' %>
-        <%= f.association :pokedex, id: 'pokemonElement' collection: Pokedex.order('id ASC') %>
+        <%= f.input :name %>
+        <%= f.input :description %>
+        <%= f.input :price, label: 'Price per day:' %>
+        <%= f.input :location %>
+        <%= f.association :pokedex, collection: Pokedex.order('id ASC') %>
         <%= f.submit 'List my Pokemon', id: 'submitBtn', class: 'btn btn-primary', disabled: true %>
       <% end %>
     </div>
