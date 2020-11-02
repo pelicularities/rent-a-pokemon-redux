@@ -26,7 +26,11 @@
         <div class="card mb-3">
           <%= cl_image_tag pokemon.pokedex.artwork.key, class:'card-img-top', crop: :fill %>
           <div class="card-body">
-            <h5 class="card-title"><%= pokemon.name %></h5>
+            <h5 class="card-title">
+              <%= link_to pokemon_path(pokemon) do %>
+                <%= pokemon.name %>
+              <% end %>
+            </h5>
             <div class="card-text mb-3">
               <strong>Price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
               <strong>Pokedex:</strong> <%= pokemon.pokedex.species %> <br>
@@ -60,11 +64,11 @@
 
             <div class="text-center">
               <% if current_user.id == pokemon.user.id %>
-                <span class="mr-3">It's yours!</span>
+                <span class="btn btn-outline-danger disabled not-allowed">It's yours!</span>
               <% else %>
-                <%= link_to 'Rent NOW!', new_pokemon_rental_path(pokemon), class: 'btn btn-primary'  %>
+                <%= link_to 'I choose you!', new_pokemon_rental_path(pokemon), class: 'btn btn-primary'  %>
               <% end %>
-              <%= link_to 'Details', pokemon_path(pokemon), class:'btn btn-secondary' %>
+              <%= link_to 'Details', pokemon_path(pokemon), class: 'btn btn-secondary'  %>
             </div>
           </div>
         </div>

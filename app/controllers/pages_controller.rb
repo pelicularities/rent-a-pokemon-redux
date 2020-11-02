@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @pokemon = Pokemon.all.order(created_at: :desc).limit(3)
+    @pokemon = Pokemon.where.not(user: current_user).order(created_at: :desc).limit(3)
   end
 
   def history

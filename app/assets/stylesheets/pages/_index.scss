@@ -1,7 +1,11 @@
 // Import page-specific CSS files here.
 @import "home";
-@import "show";
+@import "pokemon_show";
 
 body {
   padding-top: 56px;
+}
+
+.not-allowed {
+  cursor: not-allowed;
 }

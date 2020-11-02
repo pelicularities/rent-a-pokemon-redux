@@ -12,7 +12,7 @@
         <%= cl_image_tag @pokemon.pokedex.artwork.key, class:'card-img-top', crop: :fill %>
         <h2>$ <%= @pokemon.price.to_i.to_s %> / day</h2>
         <% unless current_user.id == @pokemon.user_id %>
-          <%= link_to 'I want it!', new_pokemon_rental_path(@pokemon), class: 'btn btn-primary' %>
+          <%= link_to 'I choose you!', new_pokemon_rental_path(@pokemon), class: 'btn btn-primary' %>
         <% end %>
         <div class="text-left mt-3">
           <p><strong>Owner:</strong> <%= @pokemon.user.username.capitalize %></p>
