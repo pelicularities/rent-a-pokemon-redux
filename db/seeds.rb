@@ -16,10 +16,7 @@ Pokemon.destroy_all
 Rental.destroy_all
 
 baseUrl = 'https://pokeapi.co/api/v2/pokemon/'
-ids = (1..45).to_a
-[133, 134, 135, 136, 151].each do |id|
-  ids << id
-end
+ids = (1..151).to_a
 
 # ids = [1, 2, 3, 150, 151]
 
