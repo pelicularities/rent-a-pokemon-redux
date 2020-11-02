@@ -1,18 +1,16 @@
-
-<!--   <div class="row"> -->
-  <h1 class='p-4'> List Your Pokémon </h1>
-
-  <div class="container d-flex">
-     <img src="https://img.icons8.com/color/96/000000/snorlax.png"/>
-     <img src="https://img.icons8.com/color/96/000000/psyduck.png"/>
-     <img src="https://img.icons8.com/color/96/000000/charmander.png"/>
-     <img src="https://img.icons8.com/color/96/000000/pidgey.png"/>
-     <img src="https://img.icons8.com/color/96/000000/bellsprout.png"/>
- </div>
-
-<!--  <div class="w-75 pl-5"> -->
-<!-- <div class="mx-auto" style="width: 200px;"> -->
-<div class= 'pl-5 w-75 justify-content-center'>
-  <%= render 'shared/pokemon_form' %>
+<div class="container my-3">
+  <div class="row justify-content-center">
+    <div class="col-10 col-md-8 col-lg-6">
+      <h1> List Your Pokémon </h1>
+      <%= simple_form_for @pokemon do |f| %>
+        <%= f.input :name, id: 'nameElement' %>
+        <%= f.input :description, id: 'descriptionElement' %>
+        <%= f.input :price, id: 'priceElement', label: 'Price per day:' %>
+        <%= f.input :location, id: 'locationElement' %>
+        <%= f.association :pokedex, id: 'pokemonElement' collection: Pokedex.order('id ASC') %>
+        <%= f.submit 'List my Pokemon', id: 'submitBtn', class: 'btn btn-primary', disabled: true %>
+      <% end %>
+    </div>
+  </div>
 </div>
-
+<%= javascript_pack_tag 'pokemons_new', 'data-turbolinks-track': 'reload', defer: true %>

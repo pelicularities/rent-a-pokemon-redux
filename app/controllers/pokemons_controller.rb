@@ -35,6 +35,7 @@ def create
   if pokemon.save
     redirect_to pokemons_path
   else
+    @pokemon = Pokemon.new
     render :new
   end
 end
