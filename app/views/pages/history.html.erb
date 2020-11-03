@@ -198,6 +198,8 @@
                     <div class="text-center">
                       <% if rental.review.nil? %>
                         <%= link_to 'Write review', new_rental_review_path(rental), class:'btn btn-primary' %>
+                      <% else %>
+                        <%= link_to 'Already reviewed', pokemon_path(rental.pokemon), class:'btn btn-secondary' %>
                       <% end %>
                     </div>
                   </div>
@@ -228,7 +230,7 @@
                       <strong>To:</strong> <%= rental.end_date %> <br>
                       <strong>Price:</strong> $ <%= rental.price.to_i.to_s %> <br>
                       <strong>Species:</strong> <%= rental.pokemon.pokedex.species %> <br>
-                      <strong>Rented from:</strong> <%= rental.pokemon.user.username.capitalize %>
+                      <strong>Rented to:</strong> <%= rental.user.username.capitalize %>
                     </div>
                   </div>
                 </div>

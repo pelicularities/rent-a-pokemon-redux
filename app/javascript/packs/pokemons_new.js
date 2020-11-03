@@ -18,7 +18,6 @@ const isFilled = (requiredFields) => {
 };
 
 requiredFields.forEach((field) => {
-  console.log(field);
   field.addEventListener('change', (e) => {
     if (isFilled(requiredFields)) {
       submitBtn.disabled = false;

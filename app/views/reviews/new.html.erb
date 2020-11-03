@@ -1,5 +1,29 @@
-<div class="container">
-  <div class="row">
-    <%= render 'shared/review_form' %>
+<div class="container my-3">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-6 text-center">
+      <%= simple_form_for [ @rental, @review ] do |f| %>
+        <h3>You are reviewing</h3>
+        <h1><%= @rental.pokemon.name %></h1>
+        <%= cl_image_tag @rental.pokemon.pokedex.artwork.key, crop: :fill, class: 'img-fluid' %>
+        <ul class="text-left">
+          <li><strong>Species:</strong> <%= @rental.pokemon.pokedex.species %></li>
+          <li><strong>Owner:</strong> <%= @rental.pokemon.user.username.capitalize %></li>
+          <li><strong>Start date:</strong> <%= @rental.start_date %></li>
+          <li><strong>End date:</strong> <%= @rental.start_date %></li>
+        </ul>
+        <%= f.input :description, label: 'Review' %>
+        <div class="mb-3">
+          Rating
+          <abbr title="required">*</abbr>
+          <br />
+          <% 5.times do |i| %>
+            <i class="far fa-star" id="star<%=i+1%>"></i>
+          <% end %>
+          <%= f.input :rating, :as => :hidden, :input_html => { :value => "0" } %>
+        </div>
+        <%= f.submit class: 'btn btn-primary', disabled: true, id: 'submitBtn' %>
+      <% end %>
+    </div>
   </div>
 </div>
+<%= javascript_pack_tag 'reviews_new', 'data-turbolinks-track': 'reload', defer: true %>
