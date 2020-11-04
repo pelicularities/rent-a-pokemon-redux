@@ -12,13 +12,15 @@
           <li><strong>End date:</strong> <%= @rental.start_date %></li>
         </ul>
         <%= f.input :description, label: 'Review' %>
-        <div class="mb-3">
+        <div class="pb-3">
           Rating
           <abbr title="required">*</abbr>
           <br />
-          <% 5.times do |i| %>
-            <i class="far fa-star" id="star<%=i+1%>"></i>
-          <% end %>
+          <span id="rating_stars" style="position: relative;">
+            <% 5.times do |i| %>
+              <i class="far fa-star" id="star<%=i+1%>" style="position: absolute; left: <%= 19 * (i - 2.5) %>px;"></i>
+            <% end %>
+          </span>
           <%= f.input :rating, :as => :hidden, :input_html => { :value => "0" } %>
         </div>
         <%= f.submit class: 'btn btn-primary', disabled: true, id: 'submitBtn' %>

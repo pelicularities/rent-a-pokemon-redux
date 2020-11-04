@@ -1,4 +1,5 @@
 const reviewElement = document.getElementById('review_description');
+const ratingElement = document.getElementById('rating_stars');
 const ratingValue = document.getElementById('review_rating');
 const submitBtn = document.getElementById('submitBtn');
 
@@ -44,12 +45,18 @@ const clearStars = (starsArray) => {
 }
 
 const clickStars = (starsArray, starNumber) => {
-  const starsArraySlice = starsArray.slice(0, starNumber);
-  clearStars(starsArray);
-  starsArray.forEach((star) => {
+  const starsArraySolid = starsArray.slice(0, starNumber);
+  const starsArrayEmpty = starsArray.slice(starNumber, starsArray.length);
+  // clearStars(starsArray);
+  // starsArray.forEach((star) => {
+  //   star.classList.remove('sticky');
+  // });
+  starsArrayEmpty.forEach((star) => {
+    star.classList.remove('fas');
+    star.classList.add('far');
     star.classList.remove('sticky');
   });
-  starsArraySlice.forEach((star) => {
+  starsArraySolid.forEach((star) => {
     star.classList.remove('far');
     star.classList.add('fas');
     star.classList.add('sticky');
@@ -64,10 +71,14 @@ starsArray.forEach((star, index) => {
   });
 });
 
-starsArray.forEach((star) => {
-  star.addEventListener('mouseout', () => {
-    clearStars(starsArray);
-  });
+// starsArray.forEach((star) => {
+//   star.addEventListener('mouseout', () => {
+//     clearStars(starsArray);
+//   });
+// });
+
+ratingElement.addEventListener('mouseout', () => {
+  clearStars(starsArray);
 });
 
 starsArray.forEach((star, index) => {
