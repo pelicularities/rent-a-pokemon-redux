@@ -138,8 +138,8 @@ end
 
 40.times do
   rental = Rental.new(
-    start_date: (Time.now - 86400 * Faker::Number.between(from: 3, to: 5)).strftime('%F'),
-    end_date: (Time.now - 86400 * Faker::Number.between(from: 7, to: 10)).strftime('%F'),
+    start_date: (Time.now + 86400 * Faker::Number.between(from: 3, to: 5)).strftime('%F'),
+    end_date: (Time.now + 86400 * Faker::Number.between(from: 7, to: 10)).strftime('%F'),
     pokemon: Pokemon.all.sample
   )
   if rental.pokemon.user == demo
