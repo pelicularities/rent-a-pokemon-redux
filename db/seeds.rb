@@ -41,18 +41,16 @@ puts 'completed Pokedex seeding!'
 
 puts 'seeding users...'
 
-# Users - 4
+# Users - 20
 users = [
   {
     username: 'demo',
-    email: 'demo@gmail.com',
     password: 'demo12345'
   }
 ]
 19.times do 
   users << {
     username: Faker::Internet.unique.username,
-    email: Faker::Internet.unique.email,
     password: Faker::Internet.password(min_length: 8)
   }
 end
@@ -101,11 +99,11 @@ puts "seeding rentals..."
 
 demo = User.find_by_username('demo')
 
-# Rentals - 12
-4.times do
+# Rentals - 120
+40.times do
   rental = Rental.new(
-    start_date: "2020-06-01",
-    end_date: "2020-06-08",
+    start_date: (Time.now - 86400 * Faker::Number.between(from: 7, to: 10)).strftime('%F'),
+    end_date: (Time.now - 86400 * Faker::Number.between(from: 3, to: 5)).strftime('%F'),
     pokemon: Pokemon.all.sample
   )
   if rental.pokemon.user == demo
@@ -120,10 +118,10 @@ demo = User.find_by_username('demo')
   rental.save!
 end
 
-4.times do
+40.times do
   rental = Rental.new(
-    start_date: "2020-09-15",
-    end_date: "2020-09-22",
+    start_date: (Time.now - 86400 * Faker::Number.between(from: 3, to: 5)).strftime('%F'),
+    end_date: (Time.now + 86400 * Faker::Number.between(from: 3, to: 5)).strftime('%F'),
     pokemon: Pokemon.all.sample
   )
   if rental.pokemon.user == demo
@@ -138,10 +136,10 @@ end
   rental.save!
 end
 
-4.times do
+40.times do
   rental = Rental.new(
-    start_date: "2020-12-24",
-    end_date: "2020-12-31",
+    start_date: (Time.now - 86400 * Faker::Number.between(from: 3, to: 5)).strftime('%F'),
+    end_date: (Time.now - 86400 * Faker::Number.between(from: 7, to: 10)).strftime('%F'),
     pokemon: Pokemon.all.sample
   )
   if rental.pokemon.user == demo
@@ -160,7 +158,7 @@ puts "seeded rentals!"
 
 puts "seeding reviews..."
 
-# Reviews - 12
+# Reviews - all rentals get one review
 possible_reviews = [
   {
     description: 'This Pokemon sucks!',
