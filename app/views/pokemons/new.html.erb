@@ -8,7 +8,7 @@
         <%= f.input :price, label: 'Price per day:' %>
         <%= f.input :location %>
         <%= f.association :pokedex, collection: Pokedex.order('id ASC') %>
-        <%= f.submit 'List my Pokemon', id: 'submitBtn', class: 'btn btn-primary', disabled: true %>
+        <%= f.submit 'List my Pokémon', id: 'submitBtn', class: 'btn btn-primary', disabled: true %>
       <% end %>
     </div>
   </div>
