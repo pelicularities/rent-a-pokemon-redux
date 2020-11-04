@@ -46,7 +46,7 @@ end
 def update
   @pokemon.update(pokemon_params)
   if @pokemon.save
-    redirect_to pokemon_path(@pokemon)
+    redirect_to my_pokemon_path
   else
     render :edit
   end

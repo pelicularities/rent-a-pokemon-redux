@@ -25,4 +25,8 @@ class PagesController < ApplicationController
     }
     # @rentals = user.rentals.all
   end
+
+  def my_pokemon
+    @pokemon = Pokemon.where(user: current_user);
+  end
 end

@@ -23,12 +23,11 @@ class RentalsController < ApplicationController
       render :new
     end
 
-    def success
-    end
-
+    
   end
-
+  
   private
+
   def set_pokemon
     @pokemon = Pokemon.find(params[:pokemon_id])
   end

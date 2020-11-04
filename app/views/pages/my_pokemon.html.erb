@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 my-3">
+      <h1>My Pokémon</h1>
+    </div>
+  </div>
+  <div class="row">
+    <% if @pokemon.empty? %>
+      <div class="col-12">
+        You haven't listed any of your Pokémon for rent!
+      </div>
+    <% end %>
+    <% @pokemon.each do |pokemon| %>
+      <div class="col-12 col-sm-6 col-lg-4">
+        <div class="card mb-3">
+          <%= cl_image_tag pokemon.pokedex.artwork.key, class:'card-img-top', crop: :fill %>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to pokemon_path(pokemon) do %>
+                <%= pokemon.name %>
+              <% end %>
+            </h5>
+            <div class="card-text mb-3">
+              <strong>Price:</strong> $ <%= pokemon.price.to_i.to_s %> / day<br>
+              <strong>Pokedex:</strong> <%= pokemon.pokedex.species %> <br>
+              <strong>Owner:</strong> <%= pokemon.user.username.capitalize %> <br>
+
+              <% if pokemon.reviews.length == 0 %>
+                <strong>Rating:</strong> <%= "no rating" %> 
+              <% else %>
+                <strong>Rating:</strong> 
+                <%
+                  full_stars = pokemon.avg_rating.floor
+                  half_stars = (pokemon.avg_rating % 1).zero? ? 0 : 1
+                  empty_stars = 5 - full_stars - half_stars
+                %>
+
+                <% full_stars.times do %>
+                  <i class="fas fa-star"></i>
+                <% end %>
+
+                <% half_stars.times do %>
+                  <i class="fas fa-star-half-alt"></i>
+                <% end %>
+
+                <% empty_stars.times do %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                (<%= pokemon.reviews.length %>)
+              <% end %>
+
+            </div>
+
+            <div class="text-center">
+              <%= link_to 'Edit Pokémon', edit_pokemon_path(pokemon), class: 'btn btn-primary'  %>
+              <%= link_to 'Details', pokemon_path(pokemon), class: 'btn btn-secondary'  %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

@@ -1,0 +1,12 @@
+<%= simple_form_for @pokemon do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :price, label: 'Price per day:' %>
+  <%= f.input :location %>
+  <%= f.association :pokedex, collection: Pokedex.order('id ASC') %>
+  <% if current_page?(controller: 'pokemons', action: 'new') %>
+    <%= f.submit 'List my Pokémon', id: 'submitBtn', class: 'btn btn-primary', disabled: true %>
+  <% elsif current_page?(controller: 'pokemons', action: 'edit') %>
+    <%= f.submit 'Edit my Pokémon', id: 'submitBtn', class: 'btn btn-primary' %>
+  <% end %>
+<% end %>
