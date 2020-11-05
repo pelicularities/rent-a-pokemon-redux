@@ -7,7 +7,10 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import 'flatpickr/dist/themes/airbnb.css';
+// for some reason, the following line works on local but not Heroku
+// using flatpickr/airbnb css theme from npmcdn instead
+// as a linked stylesheet in application.html.erb
+// @import 'flatpickr/dist/themes/airbnb.css';
 
 // Your CSS partials
 @import "components/index";
