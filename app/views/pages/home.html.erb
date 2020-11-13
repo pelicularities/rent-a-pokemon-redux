@@ -7,13 +7,15 @@
   </div>
 </div>
 <div class="container">
-  <div class="alert alert-primary" role="alert" style="position: static;">
-    <strong>Curious about Rent-a-Pokemon Redux?</strong> Use these credentials to log in as a demo user:
-    <p>
-      Username: <strong>demo</strong><br>
-      Password: <strong>demo12345</strong>
-    </p>
-  </div>
+  <% if current_user.nil? %>
+    <div class="alert alert-warning mt-3" role="alert" style="position: static;">
+      <strong>Curious about Rent-a-Pokemon Redux?</strong> Use these credentials to log in as a demo user:
+      <p>
+        Username: <strong>demo</strong><br>
+        Password: <strong>demo12345</strong>
+      </p>
+    </div>
+  <% end %>
   <div class="row mt-3">
     <div class="col-12">
       <h2 class="py-3">Featured Pokémon</h2>
